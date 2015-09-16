@@ -418,6 +418,7 @@
             return;
         }
         [visibleMenuViewController endAppearanceTransition];
+        [self statusBarNeedsAppearanceUpdate];
         if (!strongSelf.visible && [strongSelf.delegate conformsToProtocol:@protocol(RESideMenuDelegate)]) {
             if ([strongSelf.delegate respondsToSelector:@selector(sideMenu:didHideMenuViewController:)]) {
                 [strongSelf.delegate sideMenu:strongSelf didHideMenuViewController:rightMenuVisible ? strongSelf.rightMenuViewController : strongSelf.leftMenuViewController];
@@ -440,7 +441,6 @@
         animationBlock();
         completionBlock();
     }
-    [self statusBarNeedsAppearanceUpdate];
 }
 
 - (void)addContentButton
